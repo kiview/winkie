@@ -43,4 +43,6 @@ class PigeonAnimator:
 
 # Cell
 class PigeonAnimatorFactory:
-    DEFAULT = PigeonAnimator([('body', 'head'), ('head', 'left_neck'), ('head', 'right_neck')])
+    DEFAULT = PigeonAnimator([('left_neck', 'right_neck'), ('head', 'left_neck'), ('head', 'right_neck'), ('left_neck', 'tail'), ('right_neck', 'tail'),
+                             ('left_neck', 'left_up_wing'), ('left_up_wing', 'left_middle_wing'), ('left_middle_wing', 'left_down_wing'), ('left_up_wing', 'left_down_wing'),
+                             ('right_neck', 'right_up_wing'), ('right_up_wing', 'right_middle_wing'), ('right_middle_wing', 'right_down_wing'), ('right_up_wing', 'right_down_wing')])

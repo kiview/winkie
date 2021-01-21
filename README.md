@@ -10,14 +10,16 @@ This file will become your README and also the index of your documentation.
 
 ## How to use
 
-You can import stuff!
+You can import stuff and transform it!
 
 ```python
 imp = DLCImporter()
-imp.import_hdf('example_data/coordinates.h5')
+df = imp.import_hdf('example_data/coordinates.h5')
+display(df)
+
+df_rel = winkie.dlc_importer.transform_to_relative(df, 'body')
+display(df_rel)
 ```
-
-
 
 
 <div>
@@ -343,6 +345,330 @@ imp.import_hdf('example_data/coordinates.h5')
 <p>100 rows × 60 columns</p>
 </div>
 
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead tr th {
+        text-align: left;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr>
+      <th>bodyparts</th>
+      <th colspan="3" halign="left">head</th>
+      <th colspan="3" halign="left">beak</th>
+      <th colspan="3" halign="left">left_neck</th>
+      <th>right_neck</th>
+      <th>...</th>
+      <th>b1</th>
+      <th colspan="3" halign="left">b2</th>
+      <th colspan="3" halign="left">b3</th>
+      <th colspan="3" halign="left">b4</th>
+    </tr>
+    <tr>
+      <th>coords</th>
+      <th>x</th>
+      <th>y</th>
+      <th>likelihood</th>
+      <th>x</th>
+      <th>y</th>
+      <th>likelihood</th>
+      <th>x</th>
+      <th>y</th>
+      <th>likelihood</th>
+      <th>x</th>
+      <th>...</th>
+      <th>likelihood</th>
+      <th>x</th>
+      <th>y</th>
+      <th>likelihood</th>
+      <th>x</th>
+      <th>y</th>
+      <th>likelihood</th>
+      <th>x</th>
+      <th>y</th>
+      <th>likelihood</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>-30.632080</td>
+      <td>-119.150818</td>
+      <td>0.999999</td>
+      <td>-77.513367</td>
+      <td>-115.031540</td>
+      <td>0.999981</td>
+      <td>-77.506531</td>
+      <td>-73.035461</td>
+      <td>0.999998</td>
+      <td>-0.737366</td>
+      <td>...</td>
+      <td>0.999986</td>
+      <td>-72.065613</td>
+      <td>-137.917755</td>
+      <td>0.999972</td>
+      <td>-166.907104</td>
+      <td>-75.122620</td>
+      <td>0.999044</td>
+      <td>-83.247070</td>
+      <td>-90.024170</td>
+      <td>0.004323</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>-29.554443</td>
+      <td>-113.534241</td>
+      <td>0.999999</td>
+      <td>-77.022034</td>
+      <td>-109.778610</td>
+      <td>0.999951</td>
+      <td>-76.719788</td>
+      <td>-67.018372</td>
+      <td>0.999999</td>
+      <td>0.512878</td>
+      <td>...</td>
+      <td>0.999984</td>
+      <td>-70.192261</td>
+      <td>-132.413040</td>
+      <td>0.999969</td>
+      <td>-166.332825</td>
+      <td>-70.112671</td>
+      <td>0.999068</td>
+      <td>-81.823181</td>
+      <td>-84.200409</td>
+      <td>0.003748</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>-28.521240</td>
+      <td>-118.143829</td>
+      <td>0.999999</td>
+      <td>-75.505371</td>
+      <td>-114.664825</td>
+      <td>0.999978</td>
+      <td>-75.766174</td>
+      <td>-71.052429</td>
+      <td>0.999998</td>
+      <td>1.036743</td>
+      <td>...</td>
+      <td>0.999989</td>
+      <td>-69.163208</td>
+      <td>-137.487778</td>
+      <td>0.999967</td>
+      <td>-164.963074</td>
+      <td>-74.021790</td>
+      <td>0.999465</td>
+      <td>-80.453979</td>
+      <td>-88.705933</td>
+      <td>0.003017</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>-29.044128</td>
+      <td>-118.884583</td>
+      <td>0.999999</td>
+      <td>-76.503967</td>
+      <td>-114.811523</td>
+      <td>0.999985</td>
+      <td>-76.903442</td>
+      <td>-71.630127</td>
+      <td>0.999998</td>
+      <td>0.564026</td>
+      <td>...</td>
+      <td>0.999988</td>
+      <td>-70.414856</td>
+      <td>-138.312897</td>
+      <td>0.999962</td>
+      <td>-165.814087</td>
+      <td>-74.453308</td>
+      <td>0.999626</td>
+      <td>-81.698975</td>
+      <td>-89.477600</td>
+      <td>0.004915</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>-28.725647</td>
+      <td>-119.646011</td>
+      <td>0.999999</td>
+      <td>-77.361694</td>
+      <td>-115.519836</td>
+      <td>0.999990</td>
+      <td>-77.357422</td>
+      <td>-72.881378</td>
+      <td>0.999999</td>
+      <td>-1.129700</td>
+      <td>...</td>
+      <td>0.999991</td>
+      <td>-71.295959</td>
+      <td>-138.972672</td>
+      <td>0.999969</td>
+      <td>-166.600952</td>
+      <td>-75.100098</td>
+      <td>0.999717</td>
+      <td>-82.695190</td>
+      <td>-90.295532</td>
+      <td>0.003497</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>95</th>
+      <td>-96.228943</td>
+      <td>-105.422729</td>
+      <td>1.000000</td>
+      <td>-114.221375</td>
+      <td>-99.111252</td>
+      <td>0.018886</td>
+      <td>-90.617615</td>
+      <td>-55.778198</td>
+      <td>0.999998</td>
+      <td>-50.292114</td>
+      <td>...</td>
+      <td>0.999981</td>
+      <td>-58.697083</td>
+      <td>-123.270279</td>
+      <td>0.999988</td>
+      <td>-151.511292</td>
+      <td>-62.602875</td>
+      <td>0.999486</td>
+      <td>-45.749084</td>
+      <td>-93.996780</td>
+      <td>0.001441</td>
+    </tr>
+    <tr>
+      <th>96</th>
+      <td>-96.788635</td>
+      <td>-107.204330</td>
+      <td>1.000000</td>
+      <td>-114.699158</td>
+      <td>-101.253510</td>
+      <td>0.016135</td>
+      <td>-91.077881</td>
+      <td>-56.852844</td>
+      <td>0.999999</td>
+      <td>-51.828125</td>
+      <td>...</td>
+      <td>0.999983</td>
+      <td>-58.709229</td>
+      <td>-124.294464</td>
+      <td>0.999986</td>
+      <td>-152.246460</td>
+      <td>-64.888885</td>
+      <td>0.999226</td>
+      <td>-46.510193</td>
+      <td>-96.077972</td>
+      <td>0.001208</td>
+    </tr>
+    <tr>
+      <th>97</th>
+      <td>-94.509094</td>
+      <td>-106.319061</td>
+      <td>1.000000</td>
+      <td>-111.877625</td>
+      <td>-99.505875</td>
+      <td>0.007289</td>
+      <td>-89.357422</td>
+      <td>-56.209900</td>
+      <td>0.999999</td>
+      <td>-49.649780</td>
+      <td>...</td>
+      <td>0.999982</td>
+      <td>-55.898743</td>
+      <td>-123.712997</td>
+      <td>0.999987</td>
+      <td>-149.422852</td>
+      <td>-63.272522</td>
+      <td>0.999269</td>
+      <td>-43.813599</td>
+      <td>-95.224503</td>
+      <td>0.000828</td>
+    </tr>
+    <tr>
+      <th>98</th>
+      <td>-94.717896</td>
+      <td>-106.295471</td>
+      <td>1.000000</td>
+      <td>-112.084961</td>
+      <td>-99.378799</td>
+      <td>0.004682</td>
+      <td>-90.382507</td>
+      <td>-56.113678</td>
+      <td>1.000000</td>
+      <td>-50.372559</td>
+      <td>...</td>
+      <td>0.999983</td>
+      <td>-56.602295</td>
+      <td>-123.596344</td>
+      <td>0.999989</td>
+      <td>-149.903198</td>
+      <td>-63.567932</td>
+      <td>0.999238</td>
+      <td>201.128296</td>
+      <td>263.018005</td>
+      <td>0.000869</td>
+    </tr>
+    <tr>
+      <th>99</th>
+      <td>-93.799133</td>
+      <td>-105.807861</td>
+      <td>1.000000</td>
+      <td>-111.485535</td>
+      <td>-98.686462</td>
+      <td>0.010126</td>
+      <td>-89.915405</td>
+      <td>-56.356140</td>
+      <td>0.999999</td>
+      <td>-50.083191</td>
+      <td>...</td>
+      <td>0.999981</td>
+      <td>-55.891785</td>
+      <td>-123.012161</td>
+      <td>0.999983</td>
+      <td>-149.137329</td>
+      <td>-63.690308</td>
+      <td>0.999225</td>
+      <td>-43.190857</td>
+      <td>-92.713806</td>
+      <td>0.000920</td>
+    </tr>
+  </tbody>
+</table>
+<p>100 rows × 60 columns</p>
+</div>
 
 
 ## Development

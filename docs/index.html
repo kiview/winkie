@@ -416,6 +416,28 @@ nb_path: "index.ipynb"
 </div>
     {% endraw %}
 
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Development">Development<a class="anchor-link" href="#Development"> </a></h2><p>This project uses <a href="https://github.com/fastai/nbdev">nbdev</a> for development.
+A regular workflow involves running the following commands in order:</p>
+<div class="highlight"><pre><span></span>nbdev_build_lib
+nbdev_test_nbs
+nbdev_build_docs
+</pre></div>
+<p>We also provide a convenient wrapper script:</p>
+
+<pre><code>./nbdev_build.sh</code></pre>
+<h3 id="Development-Environment">Development Environment<a class="anchor-link" href="#Development-Environment"> </a></h3><p>The development environment can be created using <a href="https://pypi.org/project/pipenv/">pipenv</a>.
+A corresponding <code>Pipfile</code> is provided, check the <em>Pipenv</em> documentation on how to use it.</p>
+<p>There are a couple of tools pre-installed, such as Jupyter, etc..</p>
+<p>Besides installing the development environment, the actual dependencies are managed by <code>nbdev</code> through Python's <code>setuptools</code> and defined in the <code>settings.ini</code> file, under the <code>requirements</code> key. 
+In order to install them into your environment (ideally the environment created by <em>Pipenv</em>), just use the regular <code>setuptools</code> facilities:</p>
+
+<pre><code>pip install -e .</code></pre>
+
+</div>
+</div>
+</div>
 </div>
  
 

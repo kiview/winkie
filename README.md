@@ -344,3 +344,33 @@ imp.import_hdf('example_data/coordinates.h5')
 </div>
 
 
+
+## Development
+
+
+This project uses [nbdev](https://github.com/fastai/nbdev) for development.
+A regular workflow involves running the following commands in order:
+
+```bash
+nbdev_build_lib
+nbdev_test_nbs
+nbdev_build_docs
+```
+
+We also provide a convenient wrapper script:
+```
+./nbdev_build.sh
+```
+
+### Development Environment
+
+The development environment can be created using [pipenv](https://pypi.org/project/pipenv/).
+A corresponding `Pipfile` is provided, check the *Pipenv* documentation on how to use it.
+
+There are a couple of tools pre-installed, such as Jupyter, etc..
+
+Besides installing the development environment, the actual dependencies are managed by `nbdev` through Python's `setuptools` and defined in the `settings.ini` file, under the `requirements` key. 
+In order to install them into your environment (ideally the environment created by *Pipenv*), just use the regular `setuptools` facilities:
+```
+pip install -e .
+```

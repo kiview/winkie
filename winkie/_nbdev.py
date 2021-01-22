@@ -6,6 +6,7 @@ index = {"DLCImporter": "00_dlc_importer.ipynb",
          "transform_to_relative": "00_dlc_importer.ipynb",
          "add_middle_neck": "00_dlc_importer.ipynb",
          "add_rotation": "00_dlc_importer.ipynb",
+         "apply_rotation": "00_dlc_importer.ipynb",
          "PigeonAnimator": "01_pigeon_animator.ipynb",
          "PigeonAnimatorFactory": "01_pigeon_animator.ipynb"}
 

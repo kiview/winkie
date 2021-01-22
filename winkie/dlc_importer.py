@@ -41,3 +41,18 @@ def apply_rotation(df):
     df = df.copy()
     df.apply(_rotate_row, axis=1)
     return df
+
+def _rotate_row(x):
+    theta = np.radians(x['rotation_angle'][0] - 90)
+    x1, y = x['middle_neck','x'], x['middle_neck','y']
+
+    c, s = np.cos(theta), np.sin(theta)
+    rot = np.matrix([[c, s], [-s, c]])
+
+    rotated = np.dot(rot, [x1, y])
+
+    # TODO: rotate all body parts
+    x['middle_neck', 'x'] = rotated[0, 0]
+    x['middle_neck', 'y'] = rotated[0, 1] # this contains the value I want to set
+
+    return x

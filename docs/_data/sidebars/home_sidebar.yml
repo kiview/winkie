@@ -12,6 +12,9 @@ entries:
     - output: web,pdf
       title: DLCImporter
       url: dlc_importer.html
+    - output: web,pdf
+      title: PigeonAnimator
+      url: pigeon_animator.html
     output: web
     title: winkie
   output: web

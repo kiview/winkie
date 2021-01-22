@@ -1,6 +1,7 @@
 {
   "winkie": {
     "Overview": "/",
-    "DLCImporter": "dlc_importer.html"
+    "DLCImporter": "dlc_importer.html",
+    "PigeonAnimator": "pigeon_animator.html"
   }
 }

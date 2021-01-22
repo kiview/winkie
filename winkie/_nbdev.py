@@ -4,10 +4,11 @@ __all__ = ["index", "modules", "custom_doc_links", "git_url"]
 
 index = {"DLCImporter": "00_dlc_importer.ipynb",
          "transform_to_relative": "00_dlc_importer.ipynb",
-         "PigeonAnimator": "00_dlc_importer.ipynb",
-         "PigeonAnimatorFactory": "00_dlc_importer.ipynb"}
+         "PigeonAnimator": "01_pigeon_animator.ipynb",
+         "PigeonAnimatorFactory": "01_pigeon_animator.ipynb"}
 
-modules = ["dlc_importer.py"]
+modules = ["dlc_importer.py",
+           "pigeon_animator.py"]
 
 doc_url = "https://kiview.github.io/winkie/"
 

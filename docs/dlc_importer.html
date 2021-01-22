@@ -500,13 +500,13 @@ It will automatically drop the unnecessary <code>scorer</code> level.</p>
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
-<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">])</span>
-<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mf">0.75</span><span class="p">])</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">])</span>
 
 <span class="n">result</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">degrees</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arctan2</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">x</span><span class="p">))</span>
-<span class="n">expected</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">90</span><span class="p">,</span> <span class="mi">45</span><span class="p">,</span> <span class="mi">135</span><span class="p">,</span> <span class="o">-</span><span class="mi">45</span><span class="p">])</span>
+<span class="n">expected</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">90</span><span class="p">,</span> <span class="mi">45</span><span class="p">,</span> <span class="mi">135</span><span class="p">,</span> <span class="o">-</span><span class="mi">45</span><span class="p">,</span> <span class="mf">26.565051</span><span class="p">])</span>
 
-<span class="n">np</span><span class="o">.</span><span class="n">testing</span><span class="o">.</span><span class="n">assert_equal</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="n">expected</span><span class="p">)</span>
+<span class="n">np</span><span class="o">.</span><span class="n">testing</span><span class="o">.</span><span class="n">assert_almost_equal</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="n">expected</span><span class="p">,</span> <span class="n">decimal</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -563,7 +563,7 @@ Therefore, we first calculate this point, we can later use to determine the rota
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_example</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_example</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
 <span class="n">df_example</span><span class="p">[</span><span class="s1">&#39;left_neck&#39;</span><span class="p">,</span> <span class="s1">&#39;x&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
 <span class="n">df_example</span><span class="p">[</span><span class="s1">&#39;left_neck&#39;</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
 <span class="n">df_example</span><span class="p">[</span><span class="s1">&#39;right_neck&#39;</span><span class="p">,</span> <span class="s1">&#39;x&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2</span>
@@ -573,6 +573,62 @@ Therefore, we first calculate this point, we can later use to determine the rota
 
 <span class="n">test_close</span><span class="p">(</span><span class="n">df_result</span><span class="p">[</span><span class="s1">&#39;middle_neck&#39;</span><span class="p">,</span><span class="s1">&#39;x&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span> <span class="mf">1.5</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">)</span>
 <span class="n">test_close</span><span class="p">(</span><span class="n">df_result</span><span class="p">[</span><span class="s1">&#39;middle_neck&#39;</span><span class="p">,</span><span class="s1">&#39;y&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span> <span class="mf">0.75</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Based on the <code>middle_neck</code> coordinates, we now add the corresponding rotation to the dataframe.</p>
+
+</div>
+</div>
+</div>
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<h4 id="add_rotation" class="doc_header"><code>add_rotation</code><a href="https://github.com/kiview/winkie/tree/master/winkie/dlc_importer.py#L34" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>add_rotation</code>(<strong><code>df</code></strong>)</p>
+</blockquote>
+
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_result</span> <span class="o">=</span> <span class="n">add_rotation</span><span class="p">(</span><span class="n">df_result</span><span class="p">)</span>
+<span class="n">test_close</span><span class="p">(</span><span class="n">df_result</span><span class="p">[</span><span class="s1">&#39;rotation_angle&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span> <span class="mf">26.565051</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">)</span>
 </pre></div>
 
     </div>

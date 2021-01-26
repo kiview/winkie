@@ -3,11 +3,14 @@
 __all__ = ['PigeonAnimator', 'PigeonAnimatorFactory']
 
 # Cell
+import matplotlib
+import matplotlib.pyplot as plt
+plt.rc('animation', html='jshtml')
 
 class PigeonAnimator:
     """Animates a pigeon skeleton using matplotlib"""
 
-    def __init__(self, skeleton, figsize=(10,6), xlim=(0, 1000), ylim=(0, 1000)):
+    def __init__(self, skeleton, figsize=(10,6), xlim=(-500, 1000), ylim=(-500, 1000)):
         self.skeleton,self.figsize,self.xlim,self.ylim = skeleton,figsize,xlim,ylim
 
     def visualize(self, df, start, end):

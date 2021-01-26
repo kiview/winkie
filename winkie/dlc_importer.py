@@ -11,6 +11,9 @@ class DLCImporter:
     def import_hdf(self, file):
         df = pd.read_hdf(file)
         df.columns = df.columns.droplevel(0) # drop redundant scorer
+        columns_to_drop = ['a1', 'a2', 'a3', 'a4', 'b1', 'b2', 'b3', 'b4']
+        df = df.drop(columns_to_drop, axis=1, level=0)
+        df.columns = df.columns.remove_unused_levels()
         return df
 
 # Cell
@@ -31,6 +34,8 @@ def add_middle_neck(df):
     return df_middle_neck
 
 # Cell
+import numpy as np
+
 def add_rotation(df):
     df = df.copy()
     df['rotation_angle'] = np.degrees(np.arctan2(df['middle_neck', 'y'], df['middle_neck', 'x']))
@@ -44,15 +49,19 @@ def apply_rotation(df):
 
 def _rotate_row(x):
     theta = np.radians(x['rotation_angle'][0] - 90)
-    x1, y = x['middle_neck','x'], x['middle_neck','y']
 
-    c, s = np.cos(theta), np.sin(theta)
-    rot = np.matrix([[c, s], [-s, c]])
+    body_parts = list(x.index.levels[0])
+    body_parts.remove('rotation_angle')
 
-    rotated = np.dot(rot, [x1, y])
+    for b in body_parts:
+        x1, y = x[b,'x'], x[b,'y']
 
-    # TODO: rotate all body parts
-    x['middle_neck', 'x'] = rotated[0, 0]
-    x['middle_neck', 'y'] = rotated[0, 1] # this contains the value I want to set
+        c, s = np.cos(theta), np.sin(theta)
+        rot = np.matrix([[c, s], [-s, c]])
+
+        rotated = np.dot(rot, [x1, y])
+
+        x[b, 'x'] = rotated[0, 0]
+        x[b, 'y'] = rotated[0, 1]
 
     return x

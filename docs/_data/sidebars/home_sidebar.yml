@@ -15,6 +15,9 @@ entries:
     - output: web,pdf
       title: PigeonAnimator
       url: pigeon_animator.html
+    - output: web,pdf
+      title: Title
+      url: pandas_multiindex_examples.html
     output: web
     title: winkie
   output: web

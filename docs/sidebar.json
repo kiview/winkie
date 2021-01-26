@@ -2,6 +2,7 @@
   "winkie": {
     "Overview": "/",
     "DLCImporter": "dlc_importer.html",
-    "PigeonAnimator": "pigeon_animator.html"
+    "PigeonAnimator": "pigeon_animator.html",
+    "Title": "pandas_multiindex_examples.html"
   }
 }

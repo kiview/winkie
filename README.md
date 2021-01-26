@@ -12,7 +12,7 @@ This file will become your README and also the index of your documentation.
 
 You can import stuff and transform it!
 
-```python
+```
 imp = DLCImporter()
 df = imp.import_hdf('example_data/coordinates.h5')
 display(df)
@@ -345,7 +345,7 @@ display(df)
 
 To prepare the data for the further machine learning steps, we will change the coordinates to be relative to the body and rotate the coordinates, so that the vector between the body and the middle of the neck is orthogonal to the y-axis.
 
-```python
+```
 df = winkie.dlc_importer.transform_to_relative(df, 'body')
 df = winkie.dlc_importer.add_middle_neck(df)
 df = winkie.dlc_importer.add_rotation(df)
@@ -681,7 +681,7 @@ display(df)
 
 In order to check if the transformations were applied correctly, let's verify them using the `PigeonAnimator`.
 
-```python
+```
 PigeonAnimatorFactory.DEFAULT.visualize(df, 0, 90)
 ```
 

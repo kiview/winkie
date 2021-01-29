@@ -682,7 +682,7 @@ display(df)
 In order to check if the transformations were applied correctly, let's verify them using the `PigeonAnimator`.
 
 ```
-#PigeonAnimatorFactory.DEFAULT.visualize(df, 0, 90)
+PigeonAnimatorFactory.DEFAULT.visualize(df, 0, 90)
 ```
 
 ## Development

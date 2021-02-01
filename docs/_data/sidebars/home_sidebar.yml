@@ -18,6 +18,9 @@ entries:
     - output: web,pdf
       title: Pandas MultiIndex examples
       url: pandas_multiindex_examples.html
+    - output: web,pdf
+      title: LabelAssistant
+      url: label_assistant.html
     output: web
     title: winkie
   output: web

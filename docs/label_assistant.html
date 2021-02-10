@@ -40,7 +40,7 @@ nb_path: "03_label_assistant.ipynb"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h2 id="LabelAssistant" class="doc_header"><code>class</code> <code>LabelAssistant</code><a href="https://github.com/kiview/winkie/tree/master/winkie/label_assistant.py#L9" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>LabelAssistant</code>(<strong><code>behaviors</code></strong>, <strong><code>data_path</code></strong>)</p>
+<h2 id="LabelAssistant" class="doc_header"><code>class</code> <code>LabelAssistant</code><a href="https://github.com/kiview/winkie/tree/master/winkie/label_assistant.py#L10" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>LabelAssistant</code>(<strong><code>behaviors</code></strong>, <strong><code>data_path</code></strong>, <strong><code>default_label</code></strong>=<em><code>'not_defined'</code></em>)</p>
 </blockquote>
 <p>Used to label data and generate labelled data.</p>
 
@@ -70,7 +70,8 @@ nb_path: "03_label_assistant.ipynb"
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">path_to_dlc_files</span> <span class="o">=</span> <span class="s1">&#39;example_data&#39;</span>
 <span class="n">behaviors</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;pecking&#39;</span><span class="p">,</span> <span class="s1">&#39;shaking&#39;</span><span class="p">]</span>
-<span class="n">ass</span> <span class="o">=</span> <span class="n">LabelAssistant</span><span class="p">(</span><span class="n">behaviors</span><span class="p">,</span> <span class="n">path_to_dlc_files</span><span class="p">)</span>
+<span class="n">default_label</span> <span class="o">=</span> <span class="s1">&#39;not_defined&#39;</span>
+<span class="n">ass</span> <span class="o">=</span> <span class="n">LabelAssistant</span><span class="p">(</span><span class="n">behaviors</span><span class="p">,</span> <span class="n">path_to_dlc_files</span><span class="p">,</span> <span class="n">default_label</span><span class="p">)</span>
 <span class="n">ass</span><span class="o">.</span><span class="n">addLabel</span><span class="p">(</span><span class="s1">&#39;pecking&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="s1">&#39;coordinates.h5&#39;</span><span class="p">)</span>
 
 <span class="c1"># Make sure a user does not have typos during labelling</span>
@@ -86,11 +87,723 @@ nb_path: "03_label_assistant.ipynb"
 <span class="n">df_expected</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;behavior&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;pecking&#39;</span><span class="p">,</span> <span class="s1">&#39;shaking&#39;</span><span class="p">],</span> <span class="s1">&#39;start&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">10</span><span class="p">],</span> <span class="s1">&#39;end&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">15</span><span class="p">],</span> <span class="s1">&#39;file&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;coordinates.h5&#39;</span><span class="p">,</span> <span class="s1">&#39;coordinates.h5&#39;</span><span class="p">]})</span>
 <span class="n">pd</span><span class="o">.</span><span class="n">testing</span><span class="o">.</span><span class="n">assert_frame_equal</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">df_expected</span><span class="p">)</span>
 
+<span class="n">df_applied</span> <span class="o">=</span> <span class="n">ass</span><span class="o">.</span><span class="n">apply_labels</span><span class="p">()</span>
+<span class="n">display</span><span class="p">(</span><span class="n">df_applied</span><span class="p">)</span>
 
-<span class="c1">#ass.apply_labels(output_file)</span>
+<span class="n">df_c1</span> <span class="o">=</span> <span class="n">df_applied</span><span class="p">[</span><span class="n">df_applied</span><span class="p">[</span><span class="s1">&#39;file_name&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;coordinates.h5&#39;</span><span class="p">]</span>
+<span class="n">df_c2</span> <span class="o">=</span> <span class="n">df_applied</span><span class="p">[</span><span class="n">df_applied</span><span class="p">[</span><span class="s1">&#39;file_name&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;coordinates2.h5&#39;</span><span class="p">]</span>
+
+<span class="n">df_c1_4</span> <span class="o">=</span> <span class="n">df_c1</span><span class="p">[</span><span class="n">df_c1</span><span class="p">[</span><span class="s1">&#39;frame&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">4</span><span class="p">]</span>
+<span class="n">df_c2_4</span> <span class="o">=</span> <span class="n">df_c2</span><span class="p">[</span><span class="n">df_c2</span><span class="p">[</span><span class="s1">&#39;frame&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">4</span><span class="p">]</span>
+<span class="n">test_eq</span><span class="p">(</span><span class="n">df_c1_4</span><span class="p">[</span><span class="s1">&#39;behavior&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s1">&#39;pecking&#39;</span><span class="p">)</span>
+<span class="n">test_eq</span><span class="p">(</span><span class="n">df_c2_4</span><span class="p">[</span><span class="s1">&#39;behavior&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">default_label</span><span class="p">)</span>
+
+<span class="n">df_c1_12</span> <span class="o">=</span> <span class="n">df_c1</span><span class="p">[</span><span class="n">df_c1</span><span class="p">[</span><span class="s1">&#39;frame&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">12</span><span class="p">]</span>
+<span class="n">test_eq</span><span class="p">(</span><span class="n">df_c1_12</span><span class="p">[</span><span class="s1">&#39;behavior&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s1">&#39;shaking&#39;</span><span class="p">)</span>
 </pre></div>
 
     </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead tr th {
+        text-align: left;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr>
+      <th>bodyparts</th>
+      <th colspan="3" halign="left">head</th>
+      <th colspan="3" halign="left">beak</th>
+      <th colspan="3" halign="left">left_neck</th>
+      <th>right_neck</th>
+      <th>...</th>
+      <th>right_down_wing</th>
+      <th colspan="3" halign="left">body</th>
+      <th colspan="3" halign="left">tail</th>
+      <th>file_name</th>
+      <th>frame</th>
+      <th>behavior</th>
+    </tr>
+    <tr>
+      <th>coords</th>
+      <th>x</th>
+      <th>y</th>
+      <th>likelihood</th>
+      <th>x</th>
+      <th>y</th>
+      <th>likelihood</th>
+      <th>x</th>
+      <th>y</th>
+      <th>likelihood</th>
+      <th>x</th>
+      <th>...</th>
+      <th>likelihood</th>
+      <th>x</th>
+      <th>y</th>
+      <th>likelihood</th>
+      <th>x</th>
+      <th>y</th>
+      <th>likelihood</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>773.376465</td>
+      <td>231.518768</td>
+      <td>0.999999</td>
+      <td>726.495178</td>
+      <td>235.638046</td>
+      <td>0.999981</td>
+      <td>726.502014</td>
+      <td>277.634125</td>
+      <td>0.999998</td>
+      <td>803.271179</td>
+      <td>...</td>
+      <td>0.999997</td>
+      <td>804.008545</td>
+      <td>350.669586</td>
+      <td>0.999992</td>
+      <td>874.878601</td>
+      <td>485.749908</td>
+      <td>0.999999</td>
+      <td>coordinates.h5</td>
+      <td>0</td>
+      <td>not_defined</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>773.129822</td>
+      <td>231.487213</td>
+      <td>0.999999</td>
+      <td>725.662231</td>
+      <td>235.242844</td>
+      <td>0.999951</td>
+      <td>725.964478</td>
+      <td>278.003082</td>
+      <td>0.999999</td>
+      <td>803.197144</td>
+      <td>...</td>
+      <td>0.999989</td>
+      <td>802.684265</td>
+      <td>345.021454</td>
+      <td>0.999873</td>
+      <td>875.375854</td>
+      <td>487.185547</td>
+      <td>0.999997</td>
+      <td>coordinates.h5</td>
+      <td>1</td>
+      <td>not_defined</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>773.009827</td>
+      <td>231.793518</td>
+      <td>0.999999</td>
+      <td>726.025696</td>
+      <td>235.272522</td>
+      <td>0.999978</td>
+      <td>725.764893</td>
+      <td>278.884918</td>
+      <td>0.999998</td>
+      <td>802.567810</td>
+      <td>...</td>
+      <td>0.999995</td>
+      <td>801.531067</td>
+      <td>349.937347</td>
+      <td>0.999946</td>
+      <td>876.269714</td>
+      <td>485.816010</td>
+      <td>0.999999</td>
+      <td>coordinates.h5</td>
+      <td>2</td>
+      <td>pecking</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>773.748779</td>
+      <td>231.791260</td>
+      <td>0.999999</td>
+      <td>726.288940</td>
+      <td>235.864319</td>
+      <td>0.999985</td>
+      <td>725.889465</td>
+      <td>279.045715</td>
+      <td>0.999998</td>
+      <td>803.356934</td>
+      <td>...</td>
+      <td>0.999994</td>
+      <td>802.792908</td>
+      <td>350.675842</td>
+      <td>0.999970</td>
+      <td>875.973022</td>
+      <td>485.560150</td>
+      <td>0.999998</td>
+      <td>coordinates.h5</td>
+      <td>3</td>
+      <td>pecking</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>774.934326</td>
+      <td>231.623734</td>
+      <td>0.999999</td>
+      <td>726.298279</td>
+      <td>235.749908</td>
+      <td>0.999990</td>
+      <td>726.302551</td>
+      <td>278.388367</td>
+      <td>0.999999</td>
+      <td>802.530273</td>
+      <td>...</td>
+      <td>0.999998</td>
+      <td>803.659973</td>
+      <td>351.269745</td>
+      <td>0.999938</td>
+      <td>876.481873</td>
+      <td>485.140839</td>
+      <td>0.999998</td>
+      <td>coordinates.h5</td>
+      <td>4</td>
+      <td>pecking</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>95</th>
+      <td>691.788513</td>
+      <td>232.490265</td>
+      <td>1.000000</td>
+      <td>673.796082</td>
+      <td>238.801743</td>
+      <td>0.018886</td>
+      <td>697.399841</td>
+      <td>282.134796</td>
+      <td>0.999998</td>
+      <td>737.725342</td>
+      <td>...</td>
+      <td>0.999980</td>
+      <td>788.017456</td>
+      <td>337.912994</td>
+      <td>0.999999</td>
+      <td>882.997253</td>
+      <td>483.786896</td>
+      <td>1.000000</td>
+      <td>coordinates2.h5</td>
+      <td>95</td>
+      <td>not_defined</td>
+    </tr>
+    <tr>
+      <th>96</th>
+      <td>691.545410</td>
+      <td>232.707413</td>
+      <td>1.000000</td>
+      <td>673.634888</td>
+      <td>238.658234</td>
+      <td>0.016135</td>
+      <td>697.256165</td>
+      <td>283.058899</td>
+      <td>0.999999</td>
+      <td>736.505920</td>
+      <td>...</td>
+      <td>0.999943</td>
+      <td>788.334045</td>
+      <td>339.911743</td>
+      <td>0.999999</td>
+      <td>884.470215</td>
+      <td>483.485382</td>
+      <td>1.000000</td>
+      <td>coordinates2.h5</td>
+      <td>96</td>
+      <td>not_defined</td>
+    </tr>
+    <tr>
+      <th>97</th>
+      <td>691.117371</td>
+      <td>232.242767</td>
+      <td>1.000000</td>
+      <td>673.748840</td>
+      <td>239.055954</td>
+      <td>0.007289</td>
+      <td>696.269043</td>
+      <td>282.351929</td>
+      <td>0.999999</td>
+      <td>735.976685</td>
+      <td>...</td>
+      <td>0.999916</td>
+      <td>785.626465</td>
+      <td>338.561829</td>
+      <td>0.999997</td>
+      <td>885.270691</td>
+      <td>485.053131</td>
+      <td>0.999999</td>
+      <td>coordinates2.h5</td>
+      <td>97</td>
+      <td>not_defined</td>
+    </tr>
+    <tr>
+      <th>98</th>
+      <td>691.294067</td>
+      <td>232.225220</td>
+      <td>1.000000</td>
+      <td>673.927002</td>
+      <td>239.141891</td>
+      <td>0.004682</td>
+      <td>695.629456</td>
+      <td>282.407013</td>
+      <td>1.000000</td>
+      <td>735.639404</td>
+      <td>...</td>
+      <td>0.999876</td>
+      <td>786.011963</td>
+      <td>338.520691</td>
+      <td>0.999997</td>
+      <td>885.585388</td>
+      <td>484.755859</td>
+      <td>0.999999</td>
+      <td>coordinates2.h5</td>
+      <td>98</td>
+      <td>not_defined</td>
+    </tr>
+    <tr>
+      <th>99</th>
+      <td>691.483643</td>
+      <td>232.269226</td>
+      <td>1.000000</td>
+      <td>673.797241</td>
+      <td>239.390625</td>
+      <td>0.010126</td>
+      <td>695.367371</td>
+      <td>281.720947</td>
+      <td>0.999999</td>
+      <td>735.199585</td>
+      <td>...</td>
+      <td>0.999786</td>
+      <td>785.282776</td>
+      <td>338.077087</td>
+      <td>0.999992</td>
+      <td>885.361023</td>
+      <td>483.480896</td>
+      <td>1.000000</td>
+      <td>coordinates2.h5</td>
+      <td>99</td>
+      <td>not_defined</td>
+    </tr>
+  </tbody>
+</table>
+<p>200 rows × 39 columns</p>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>It is then advised to save the labelled data for future processing.</p>
+
+</div>
+</div>
+</div>
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_applied</span><span class="o">.</span><span class="n">to_hdf</span><span class="p">(</span><span class="s1">&#39;_tmp_labelled_behaviors.h5&#39;</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="s1">&#39;labels&#39;</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">read_hdf</span><span class="p">(</span><span class="s1">&#39;_tmp_labelled_behaviors.h5&#39;</span><span class="p">))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead tr th {
+        text-align: left;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr>
+      <th>bodyparts</th>
+      <th colspan="3" halign="left">head</th>
+      <th colspan="3" halign="left">beak</th>
+      <th colspan="3" halign="left">left_neck</th>
+      <th>right_neck</th>
+      <th>...</th>
+      <th>right_down_wing</th>
+      <th colspan="3" halign="left">body</th>
+      <th colspan="3" halign="left">tail</th>
+      <th>file_name</th>
+      <th>frame</th>
+      <th>behavior</th>
+    </tr>
+    <tr>
+      <th>coords</th>
+      <th>x</th>
+      <th>y</th>
+      <th>likelihood</th>
+      <th>x</th>
+      <th>y</th>
+      <th>likelihood</th>
+      <th>x</th>
+      <th>y</th>
+      <th>likelihood</th>
+      <th>x</th>
+      <th>...</th>
+      <th>likelihood</th>
+      <th>x</th>
+      <th>y</th>
+      <th>likelihood</th>
+      <th>x</th>
+      <th>y</th>
+      <th>likelihood</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>773.376465</td>
+      <td>231.518768</td>
+      <td>0.999999</td>
+      <td>726.495178</td>
+      <td>235.638046</td>
+      <td>0.999981</td>
+      <td>726.502014</td>
+      <td>277.634125</td>
+      <td>0.999998</td>
+      <td>803.271179</td>
+      <td>...</td>
+      <td>0.999997</td>
+      <td>804.008545</td>
+      <td>350.669586</td>
+      <td>0.999992</td>
+      <td>874.878601</td>
+      <td>485.749908</td>
+      <td>0.999999</td>
+      <td>coordinates.h5</td>
+      <td>0</td>
+      <td>not_defined</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>773.129822</td>
+      <td>231.487213</td>
+      <td>0.999999</td>
+      <td>725.662231</td>
+      <td>235.242844</td>
+      <td>0.999951</td>
+      <td>725.964478</td>
+      <td>278.003082</td>
+      <td>0.999999</td>
+      <td>803.197144</td>
+      <td>...</td>
+      <td>0.999989</td>
+      <td>802.684265</td>
+      <td>345.021454</td>
+      <td>0.999873</td>
+      <td>875.375854</td>
+      <td>487.185547</td>
+      <td>0.999997</td>
+      <td>coordinates.h5</td>
+      <td>1</td>
+      <td>not_defined</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>773.009827</td>
+      <td>231.793518</td>
+      <td>0.999999</td>
+      <td>726.025696</td>
+      <td>235.272522</td>
+      <td>0.999978</td>
+      <td>725.764893</td>
+      <td>278.884918</td>
+      <td>0.999998</td>
+      <td>802.567810</td>
+      <td>...</td>
+      <td>0.999995</td>
+      <td>801.531067</td>
+      <td>349.937347</td>
+      <td>0.999946</td>
+      <td>876.269714</td>
+      <td>485.816010</td>
+      <td>0.999999</td>
+      <td>coordinates.h5</td>
+      <td>2</td>
+      <td>pecking</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>773.748779</td>
+      <td>231.791260</td>
+      <td>0.999999</td>
+      <td>726.288940</td>
+      <td>235.864319</td>
+      <td>0.999985</td>
+      <td>725.889465</td>
+      <td>279.045715</td>
+      <td>0.999998</td>
+      <td>803.356934</td>
+      <td>...</td>
+      <td>0.999994</td>
+      <td>802.792908</td>
+      <td>350.675842</td>
+      <td>0.999970</td>
+      <td>875.973022</td>
+      <td>485.560150</td>
+      <td>0.999998</td>
+      <td>coordinates.h5</td>
+      <td>3</td>
+      <td>pecking</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>774.934326</td>
+      <td>231.623734</td>
+      <td>0.999999</td>
+      <td>726.298279</td>
+      <td>235.749908</td>
+      <td>0.999990</td>
+      <td>726.302551</td>
+      <td>278.388367</td>
+      <td>0.999999</td>
+      <td>802.530273</td>
+      <td>...</td>
+      <td>0.999998</td>
+      <td>803.659973</td>
+      <td>351.269745</td>
+      <td>0.999938</td>
+      <td>876.481873</td>
+      <td>485.140839</td>
+      <td>0.999998</td>
+      <td>coordinates.h5</td>
+      <td>4</td>
+      <td>pecking</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>95</th>
+      <td>691.788513</td>
+      <td>232.490265</td>
+      <td>1.000000</td>
+      <td>673.796082</td>
+      <td>238.801743</td>
+      <td>0.018886</td>
+      <td>697.399841</td>
+      <td>282.134796</td>
+      <td>0.999998</td>
+      <td>737.725342</td>
+      <td>...</td>
+      <td>0.999980</td>
+      <td>788.017456</td>
+      <td>337.912994</td>
+      <td>0.999999</td>
+      <td>882.997253</td>
+      <td>483.786896</td>
+      <td>1.000000</td>
+      <td>coordinates2.h5</td>
+      <td>95</td>
+      <td>not_defined</td>
+    </tr>
+    <tr>
+      <th>96</th>
+      <td>691.545410</td>
+      <td>232.707413</td>
+      <td>1.000000</td>
+      <td>673.634888</td>
+      <td>238.658234</td>
+      <td>0.016135</td>
+      <td>697.256165</td>
+      <td>283.058899</td>
+      <td>0.999999</td>
+      <td>736.505920</td>
+      <td>...</td>
+      <td>0.999943</td>
+      <td>788.334045</td>
+      <td>339.911743</td>
+      <td>0.999999</td>
+      <td>884.470215</td>
+      <td>483.485382</td>
+      <td>1.000000</td>
+      <td>coordinates2.h5</td>
+      <td>96</td>
+      <td>not_defined</td>
+    </tr>
+    <tr>
+      <th>97</th>
+      <td>691.117371</td>
+      <td>232.242767</td>
+      <td>1.000000</td>
+      <td>673.748840</td>
+      <td>239.055954</td>
+      <td>0.007289</td>
+      <td>696.269043</td>
+      <td>282.351929</td>
+      <td>0.999999</td>
+      <td>735.976685</td>
+      <td>...</td>
+      <td>0.999916</td>
+      <td>785.626465</td>
+      <td>338.561829</td>
+      <td>0.999997</td>
+      <td>885.270691</td>
+      <td>485.053131</td>
+      <td>0.999999</td>
+      <td>coordinates2.h5</td>
+      <td>97</td>
+      <td>not_defined</td>
+    </tr>
+    <tr>
+      <th>98</th>
+      <td>691.294067</td>
+      <td>232.225220</td>
+      <td>1.000000</td>
+      <td>673.927002</td>
+      <td>239.141891</td>
+      <td>0.004682</td>
+      <td>695.629456</td>
+      <td>282.407013</td>
+      <td>1.000000</td>
+      <td>735.639404</td>
+      <td>...</td>
+      <td>0.999876</td>
+      <td>786.011963</td>
+      <td>338.520691</td>
+      <td>0.999997</td>
+      <td>885.585388</td>
+      <td>484.755859</td>
+      <td>0.999999</td>
+      <td>coordinates2.h5</td>
+      <td>98</td>
+      <td>not_defined</td>
+    </tr>
+    <tr>
+      <th>99</th>
+      <td>691.483643</td>
+      <td>232.269226</td>
+      <td>1.000000</td>
+      <td>673.797241</td>
+      <td>239.390625</td>
+      <td>0.010126</td>
+      <td>695.367371</td>
+      <td>281.720947</td>
+      <td>0.999999</td>
+      <td>735.199585</td>
+      <td>...</td>
+      <td>0.999786</td>
+      <td>785.282776</td>
+      <td>338.077087</td>
+      <td>0.999992</td>
+      <td>885.361023</td>
+      <td>483.480896</td>
+      <td>1.000000</td>
+      <td>coordinates2.h5</td>
+      <td>99</td>
+      <td>not_defined</td>
+    </tr>
+  </tbody>
+</table>
+<p>200 rows × 39 columns</p>
+</div>
+</div>
+
+</div>
+
 </div>
 </div>
 

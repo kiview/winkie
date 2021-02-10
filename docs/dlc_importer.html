@@ -61,6 +61,31 @@ nb_path: "00_dlc_importer.ipynb"
 </div>
     {% endraw %}
 
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<h4 id="DLCImporter.import_hdf" class="doc_header"><code>DLCImporter.import_hdf</code><a href="__main__.py#L7" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>DLCImporter.import_hdf</code>(<strong><code>file</code></strong>)</p>
+</blockquote>
+<p>Import the specified file.</p>
+
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><a href="/winkie/dlc_importer.html#DLCImporter"><code>DLCImporter</code></a> can be used to import result files from DeepLabCut in H5 format.
@@ -85,342 +110,6 @@ It will automatically drop the unnecessary <code>scorer</code> level.</p>
 </div>
 </div>
 
-<div class="output_wrapper">
-<div class="output">
-
-<div class="output_area">
-
-
-<div class="output_html rendered_html output_subarea ">
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead tr th {
-        text-align: left;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr>
-      <th>bodyparts</th>
-      <th colspan="3" halign="left">head</th>
-      <th colspan="3" halign="left">beak</th>
-      <th colspan="3" halign="left">left_neck</th>
-      <th>right_neck</th>
-      <th>...</th>
-      <th>right_middle_wing</th>
-      <th colspan="3" halign="left">right_down_wing</th>
-      <th colspan="3" halign="left">body</th>
-      <th colspan="3" halign="left">tail</th>
-    </tr>
-    <tr>
-      <th>coords</th>
-      <th>x</th>
-      <th>y</th>
-      <th>likelihood</th>
-      <th>x</th>
-      <th>y</th>
-      <th>likelihood</th>
-      <th>x</th>
-      <th>y</th>
-      <th>likelihood</th>
-      <th>x</th>
-      <th>...</th>
-      <th>likelihood</th>
-      <th>x</th>
-      <th>y</th>
-      <th>likelihood</th>
-      <th>x</th>
-      <th>y</th>
-      <th>likelihood</th>
-      <th>x</th>
-      <th>y</th>
-      <th>likelihood</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>773.376465</td>
-      <td>231.518768</td>
-      <td>0.999999</td>
-      <td>726.495178</td>
-      <td>235.638046</td>
-      <td>0.999981</td>
-      <td>726.502014</td>
-      <td>277.634125</td>
-      <td>0.999998</td>
-      <td>803.271179</td>
-      <td>...</td>
-      <td>0.999998</td>
-      <td>866.702393</td>
-      <td>446.583923</td>
-      <td>0.999997</td>
-      <td>804.008545</td>
-      <td>350.669586</td>
-      <td>0.999992</td>
-      <td>874.878601</td>
-      <td>485.749908</td>
-      <td>0.999999</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>773.129822</td>
-      <td>231.487213</td>
-      <td>0.999999</td>
-      <td>725.662231</td>
-      <td>235.242844</td>
-      <td>0.999951</td>
-      <td>725.964478</td>
-      <td>278.003082</td>
-      <td>0.999999</td>
-      <td>803.197144</td>
-      <td>...</td>
-      <td>0.999997</td>
-      <td>866.877441</td>
-      <td>446.645325</td>
-      <td>0.999989</td>
-      <td>802.684265</td>
-      <td>345.021454</td>
-      <td>0.999873</td>
-      <td>875.375854</td>
-      <td>487.185547</td>
-      <td>0.999997</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>773.009827</td>
-      <td>231.793518</td>
-      <td>0.999999</td>
-      <td>726.025696</td>
-      <td>235.272522</td>
-      <td>0.999978</td>
-      <td>725.764893</td>
-      <td>278.884918</td>
-      <td>0.999998</td>
-      <td>802.567810</td>
-      <td>...</td>
-      <td>0.999997</td>
-      <td>867.120056</td>
-      <td>447.921356</td>
-      <td>0.999995</td>
-      <td>801.531067</td>
-      <td>349.937347</td>
-      <td>0.999946</td>
-      <td>876.269714</td>
-      <td>485.816010</td>
-      <td>0.999999</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>773.748779</td>
-      <td>231.791260</td>
-      <td>0.999999</td>
-      <td>726.288940</td>
-      <td>235.864319</td>
-      <td>0.999985</td>
-      <td>725.889465</td>
-      <td>279.045715</td>
-      <td>0.999998</td>
-      <td>803.356934</td>
-      <td>...</td>
-      <td>0.999992</td>
-      <td>866.839966</td>
-      <td>448.009460</td>
-      <td>0.999994</td>
-      <td>802.792908</td>
-      <td>350.675842</td>
-      <td>0.999970</td>
-      <td>875.973022</td>
-      <td>485.560150</td>
-      <td>0.999998</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>774.934326</td>
-      <td>231.623734</td>
-      <td>0.999999</td>
-      <td>726.298279</td>
-      <td>235.749908</td>
-      <td>0.999990</td>
-      <td>726.302551</td>
-      <td>278.388367</td>
-      <td>0.999999</td>
-      <td>802.530273</td>
-      <td>...</td>
-      <td>0.999995</td>
-      <td>866.429382</td>
-      <td>446.349670</td>
-      <td>0.999998</td>
-      <td>803.659973</td>
-      <td>351.269745</td>
-      <td>0.999938</td>
-      <td>876.481873</td>
-      <td>485.140839</td>
-      <td>0.999998</td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-    </tr>
-    <tr>
-      <th>95</th>
-      <td>691.788513</td>
-      <td>232.490265</td>
-      <td>1.000000</td>
-      <td>673.796082</td>
-      <td>238.801743</td>
-      <td>0.018886</td>
-      <td>697.399841</td>
-      <td>282.134796</td>
-      <td>0.999998</td>
-      <td>737.725342</td>
-      <td>...</td>
-      <td>0.999993</td>
-      <td>866.965027</td>
-      <td>433.505768</td>
-      <td>0.999980</td>
-      <td>788.017456</td>
-      <td>337.912994</td>
-      <td>0.999999</td>
-      <td>882.997253</td>
-      <td>483.786896</td>
-      <td>1.000000</td>
-    </tr>
-    <tr>
-      <th>96</th>
-      <td>691.545410</td>
-      <td>232.707413</td>
-      <td>1.000000</td>
-      <td>673.634888</td>
-      <td>238.658234</td>
-      <td>0.016135</td>
-      <td>697.256165</td>
-      <td>283.058899</td>
-      <td>0.999999</td>
-      <td>736.505920</td>
-      <td>...</td>
-      <td>0.999995</td>
-      <td>868.164307</td>
-      <td>432.291901</td>
-      <td>0.999943</td>
-      <td>788.334045</td>
-      <td>339.911743</td>
-      <td>0.999999</td>
-      <td>884.470215</td>
-      <td>483.485382</td>
-      <td>1.000000</td>
-    </tr>
-    <tr>
-      <th>97</th>
-      <td>691.117371</td>
-      <td>232.242767</td>
-      <td>1.000000</td>
-      <td>673.748840</td>
-      <td>239.055954</td>
-      <td>0.007289</td>
-      <td>696.269043</td>
-      <td>282.351929</td>
-      <td>0.999999</td>
-      <td>735.976685</td>
-      <td>...</td>
-      <td>0.999984</td>
-      <td>868.530457</td>
-      <td>434.697205</td>
-      <td>0.999916</td>
-      <td>785.626465</td>
-      <td>338.561829</td>
-      <td>0.999997</td>
-      <td>885.270691</td>
-      <td>485.053131</td>
-      <td>0.999999</td>
-    </tr>
-    <tr>
-      <th>98</th>
-      <td>691.294067</td>
-      <td>232.225220</td>
-      <td>1.000000</td>
-      <td>673.927002</td>
-      <td>239.141891</td>
-      <td>0.004682</td>
-      <td>695.629456</td>
-      <td>282.407013</td>
-      <td>1.000000</td>
-      <td>735.639404</td>
-      <td>...</td>
-      <td>0.999977</td>
-      <td>868.368958</td>
-      <td>434.125732</td>
-      <td>0.999876</td>
-      <td>786.011963</td>
-      <td>338.520691</td>
-      <td>0.999997</td>
-      <td>885.585388</td>
-      <td>484.755859</td>
-      <td>0.999999</td>
-    </tr>
-    <tr>
-      <th>99</th>
-      <td>691.483643</td>
-      <td>232.269226</td>
-      <td>1.000000</td>
-      <td>673.797241</td>
-      <td>239.390625</td>
-      <td>0.010126</td>
-      <td>695.367371</td>
-      <td>281.720947</td>
-      <td>0.999999</td>
-      <td>735.199585</td>
-      <td>...</td>
-      <td>0.999970</td>
-      <td>868.662292</td>
-      <td>434.387238</td>
-      <td>0.999786</td>
-      <td>785.282776</td>
-      <td>338.077087</td>
-      <td>0.999992</td>
-      <td>885.361023</td>
-      <td>483.480896</td>
-      <td>1.000000</td>
-    </tr>
-  </tbody>
-</table>
-<p>100 rows × 36 columns</p>
-</div>
-</div>
-
-</div>
-
-</div>
-</div>
-
 </div>
     {% endraw %}
 
@@ -442,7 +131,7 @@ It will automatically drop the unnecessary <code>scorer</code> level.</p>
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="transform_to_relative" class="doc_header"><code>transform_to_relative</code><a href="https://github.com/kiview/winkie/tree/master/winkie/dlc_importer.py#L20" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>transform_to_relative</code>(<strong><code>df</code></strong>, <strong><code>bodypart</code></strong>)</p>
+<h4 id="transform_to_relative" class="doc_header"><code>transform_to_relative</code><a href="https://github.com/kiview/winkie/tree/master/winkie/dlc_importer.py#L21" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>transform_to_relative</code>(<strong><code>df</code></strong>, <strong><code>bodypart</code></strong>)</p>
 </blockquote>
 
 </div>
@@ -527,7 +216,7 @@ It will automatically drop the unnecessary <code>scorer</code> level.</p>
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="add_middle_neck" class="doc_header"><code>add_middle_neck</code><a href="https://github.com/kiview/winkie/tree/master/winkie/dlc_importer.py#L30" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>add_middle_neck</code>(<strong><code>df</code></strong>)</p>
+<h4 id="add_middle_neck" class="doc_header"><code>add_middle_neck</code><a href="https://github.com/kiview/winkie/tree/master/winkie/dlc_importer.py#L31" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>add_middle_neck</code>(<strong><code>df</code></strong>)</p>
 </blockquote>
 
 </div>
@@ -600,7 +289,7 @@ Therefore, we first calculate this point, we can later use to determine the rota
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="add_rotation" class="doc_header"><code>add_rotation</code><a href="https://github.com/kiview/winkie/tree/master/winkie/dlc_importer.py#L39" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>add_rotation</code>(<strong><code>df</code></strong>)</p>
+<h4 id="add_rotation" class="doc_header"><code>add_rotation</code><a href="https://github.com/kiview/winkie/tree/master/winkie/dlc_importer.py#L40" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>add_rotation</code>(<strong><code>df</code></strong>)</p>
 </blockquote>
 
 </div>
@@ -649,7 +338,7 @@ Therefore, we first calculate this point, we can later use to determine the rota
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="apply_rotation" class="doc_header"><code>apply_rotation</code><a href="https://github.com/kiview/winkie/tree/master/winkie/dlc_importer.py#L45" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>apply_rotation</code>(<strong><code>df</code></strong>)</p>
+<h4 id="apply_rotation" class="doc_header"><code>apply_rotation</code><a href="https://github.com/kiview/winkie/tree/master/winkie/dlc_importer.py#L46" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>apply_rotation</code>(<strong><code>df</code></strong>)</p>
 </blockquote>
 
 </div>
@@ -710,343 +399,6 @@ Therefore, we first calculate this point, we can later use to determine the rota
 </pre></div>
 
     </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="output_area">
-
-
-<div class="output_html rendered_html output_subarea output_execute_result">
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead tr th {
-        text-align: left;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr>
-      <th>bodyparts</th>
-      <th colspan="3" halign="left">head</th>
-      <th colspan="3" halign="left">beak</th>
-      <th colspan="3" halign="left">left_neck</th>
-      <th>right_neck</th>
-      <th>...</th>
-      <th>right_down_wing</th>
-      <th colspan="3" halign="left">body</th>
-      <th colspan="3" halign="left">tail</th>
-      <th colspan="2" halign="left">middle_neck</th>
-      <th>rotation_angle</th>
-    </tr>
-    <tr>
-      <th>coords</th>
-      <th>x</th>
-      <th>y</th>
-      <th>likelihood</th>
-      <th>x</th>
-      <th>y</th>
-      <th>likelihood</th>
-      <th>x</th>
-      <th>y</th>
-      <th>likelihood</th>
-      <th>x</th>
-      <th>...</th>
-      <th>likelihood</th>
-      <th>x</th>
-      <th>y</th>
-      <th>likelihood</th>
-      <th>x</th>
-      <th>y</th>
-      <th>likelihood</th>
-      <th>x</th>
-      <th>y</th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>138.787788</td>
-      <td>795.267280</td>
-      <td>0.999999</td>
-      <td>114.137445</td>
-      <td>755.177579</td>
-      <td>0.999981</td>
-      <td>-0.447214</td>
-      <td>1.341641</td>
-      <td>0.999998</td>
-      <td>0.447214</td>
-      <td>...</td>
-      <td>0.999997</td>
-      <td>45.915139</td>
-      <td>875.951311</td>
-      <td>0.999992</td>
-      <td>-43.210321</td>
-      <td>999.749173</td>
-      <td>0.999999</td>
-      <td>1.110223e-16</td>
-      <td>1.677051</td>
-      <td>26.565051</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>39.834331</td>
-      <td>806.057862</td>
-      <td>0.999999</td>
-      <td>20.450851</td>
-      <td>762.565822</td>
-      <td>0.999951</td>
-      <td>-19.756414</td>
-      <td>777.122783</td>
-      <td>0.999999</td>
-      <td>19.756414</td>
-      <td>...</td>
-      <td>0.999989</td>
-      <td>-57.324910</td>
-      <td>871.811727</td>
-      <td>0.999873</td>
-      <td>-167.074372</td>
-      <td>987.784793</td>
-      <td>0.999997</td>
-      <td>-8.526513e-14</td>
-      <td>811.093066</td>
-      <td>19.497707</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>39.749968</td>
-      <td>806.034966</td>
-      <td>0.999999</td>
-      <td>20.775538</td>
-      <td>762.912084</td>
-      <td>0.999978</td>
-      <td>-20.418605</td>
-      <td>777.235201</td>
-      <td>0.999998</td>
-      <td>20.418605</td>
-      <td>...</td>
-      <td>0.999995</td>
-      <td>-62.079260</td>
-      <td>872.384298</td>
-      <td>0.999946</td>
-      <td>-165.185364</td>
-      <td>988.220422</td>
-      <td>0.999999</td>
-      <td>5.684342e-14</td>
-      <td>810.740481</td>
-      <td>19.515082</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>40.164570</td>
-      <td>806.722486</td>
-      <td>0.999999</td>
-      <td>20.462394</td>
-      <td>763.353714</td>
-      <td>0.999985</td>
-      <td>-20.368948</td>
-      <td>777.410531</td>
-      <td>0.999998</td>
-      <td>20.368948</td>
-      <td>...</td>
-      <td>0.999994</td>
-      <td>-62.174409</td>
-      <td>873.833132</td>
-      <td>0.999970</td>
-      <td>-164.840502</td>
-      <td>987.889166</td>
-      <td>0.999998</td>
-      <td>-2.842171e-14</td>
-      <td>811.284220</td>
-      <td>19.526845</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>39.764190</td>
-      <td>807.831401</td>
-      <td>0.999999</td>
-      <td>19.671357</td>
-      <td>763.348051</td>
-      <td>0.999990</td>
-      <td>-20.530139</td>
-      <td>777.556424</td>
-      <td>0.999999</td>
-      <td>20.530139</td>
-      <td>...</td>
-      <td>0.999998</td>
-      <td>-63.478050</td>
-      <td>874.774441</td>
-      <td>0.999938</td>
-      <td>-165.442840</td>
-      <td>988.033791</td>
-      <td>0.999998</td>
-      <td>-2.842171e-14</td>
-      <td>810.725635</td>
-      <td>19.459142</td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-    </tr>
-    <tr>
-      <th>95</th>
-      <td>22.820040</td>
-      <td>729.453436</td>
-      <td>1.000000</td>
-      <td>10.640974</td>
-      <td>714.782625</td>
-      <td>0.018886</td>
-      <td>-21.767582</td>
-      <td>751.992523</td>
-      <td>0.999998</td>
-      <td>21.767582</td>
-      <td>...</td>
-      <td>0.999980</td>
-      <td>-42.519259</td>
-      <td>856.357878</td>
-      <td>0.999999</td>
-      <td>-146.215377</td>
-      <td>996.170153</td>
-      <td>1.000000</td>
-      <td>5.684342e-14</td>
-      <td>765.418580</td>
-      <td>20.367862</td>
-    </tr>
-    <tr>
-      <th>96</th>
-      <td>22.570502</td>
-      <td>729.299915</td>
-      <td>1.000000</td>
-      <td>10.757272</td>
-      <td>714.580993</td>
-      <td>0.016135</td>
-      <td>-22.644057</td>
-      <td>752.180660</td>
-      <td>0.999999</td>
-      <td>22.644057</td>
-      <td>...</td>
-      <td>0.999943</td>
-      <td>-44.237424</td>
-      <td>857.352676</td>
-      <td>0.999999</td>
-      <td>-145.367203</td>
-      <td>997.453784</td>
-      <td>1.000000</td>
-      <td>-2.842171e-14</td>
-      <td>764.706621</td>
-      <td>20.370898</td>
-    </tr>
-    <tr>
-      <th>97</th>
-      <td>22.580007</td>
-      <td>728.745543</td>
-      <td>1.000000</td>
-      <td>10.152300</td>
-      <td>714.830175</td>
-      <td>0.007289</td>
-      <td>-22.610462</td>
-      <td>751.000638</td>
-      <td>0.999999</td>
-      <td>22.610462</td>
-      <td>...</td>
-      <td>0.999916</td>
-      <td>-44.239268</td>
-      <td>854.327772</td>
-      <td>0.999997</td>
-      <td>-146.937995</td>
-      <td>998.694128</td>
-      <td>0.999999</td>
-      <td>8.526513e-14</td>
-      <td>763.790083</td>
-      <td>20.349113</td>
-    </tr>
-    <tr>
-      <th>98</th>
-      <td>23.107823</td>
-      <td>728.890986</td>
-      <td>1.000000</td>
-      <td>10.575034</td>
-      <td>715.020711</td>
-      <td>0.004682</td>
-      <td>-22.421310</td>
-      <td>750.434105</td>
-      <td>1.000000</td>
-      <td>22.421310</td>
-      <td>...</td>
-      <td>0.999876</td>
-      <td>-43.539081</td>
-      <td>854.701944</td>
-      <td>0.999997</td>
-      <td>-145.933244</td>
-      <td>998.976081</td>
-      <td>0.999999</td>
-      <td>8.526513e-14</td>
-      <td>763.444060</td>
-      <td>20.384479</td>
-    </tr>
-    <tr>
-      <th>99</th>
-      <td>23.165527</td>
-      <td>729.082972</td>
-      <td>1.000000</td>
-      <td>10.328965</td>
-      <td>714.985249</td>
-      <td>0.010126</td>
-      <td>-21.835634</td>
-      <td>749.950450</td>
-      <td>0.999999</td>
-      <td>21.835634</td>
-      <td>...</td>
-      <td>0.999786</td>
-      <td>-43.338690</td>
-      <td>853.865864</td>
-      <td>0.999992</td>
-      <td>-144.771195</td>
-      <td>998.328212</td>
-      <td>1.000000</td>
-      <td>8.526513e-14</td>
-      <td>763.082467</td>
-      <td>20.387066</td>
-    </tr>
-  </tbody>
-</table>
-<p>100 rows × 39 columns</p>
-</div>
-</div>
-
-</div>
-
 </div>
 </div>
 

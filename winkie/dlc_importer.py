@@ -9,6 +9,7 @@ class DLCImporter:
     """Used to import DLC result files."""
 
     def import_hdf(self, file):
+        """Import the specified file."""
         df = pd.read_hdf(file)
         df.columns = df.columns.droplevel(0) # drop redundant scorer
         columns_to_drop = ['a1', 'a2', 'a3', 'a4', 'b1', 'b2', 'b3', 'b4']

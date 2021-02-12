@@ -9,11 +9,14 @@ index = {"DLCImporter": "00_dlc_importer.ipynb",
          "apply_rotation": "00_dlc_importer.ipynb",
          "PigeonAnimator": "01_pigeon_animator.ipynb",
          "PigeonAnimatorFactory": "01_pigeon_animator.ipynb",
-         "LabelAssistant": "03_label_assistant.ipynb"}
+         "LabelAssistant": "03_label_assistant.ipynb",
+         "build_timeseries": "04_ml.ipynb",
+         "build_model": "04_ml.ipynb"}
 
 modules = ["dlc_importer.py",
            "pigeon_animator.py",
-           "label_assistant.py"]
+           "label_assistant.py",
+           "ml.py"]
 
 doc_url = "https://kiview.github.io/winkie/"
 

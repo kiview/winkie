@@ -5,10 +5,15 @@ __all__ = ['LabelAssistant']
 # Cell
 import os
 import pandas as pd
+import winkie.dlc_importer as dlc_importer
 from .dlc_importer import DLCImporter
 
 class LabelAssistant:
-    """Used to label data and generate labelled data."""
+    """Used to label data and generate labelled data.
+
+    Please note that generating the labelled data will, as of now, also apply all pre-processing included in
+    `dlc_importer`.
+    """
 
     def __init__(self, behaviors, data_path, default_label='not_defined'):
         self.behaviors = behaviors
@@ -32,11 +37,20 @@ class LabelAssistant:
         self.labels['end'].append(end_frame)
         self.labels['file'].append(file_name)
 
-    def apply_labels(self):
+    def apply_labels(self, origin_bodypart='body'):
+        "Apply labels on all available data and execue preprocessing."
+
         def import_and_tag(file_name):
+            "Note that this will also preprocess the `dlc_importer` coordinates."
             df = self.imp.import_hdf(file_name)
+            # TODO: encapsulate sequence of steps into function in DLCImporter?
+            df = dlc_importer.transform_to_relative(df, origin_bodypart)
+            df = dlc_importer.add_middle_neck(df) # this is a bit opinionated
+            df = dlc_importer.add_rotation(df)
+            df = dlc_importer.apply_rotation(df)
             df['file_name'] = os.path.basename(file_name)
             df['frame'] = df.index
+
             return df
 
         df_list = [import_and_tag(f) for f in self.file_paths]

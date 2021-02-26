@@ -26,11 +26,15 @@ def build_timeseries(df, features, timeslice_length):
         dominant_label = stats.mode(df['behavior'][i:i_end])[0][0]
         labels.append(dominant_label)
 
-    # TODO: think about how to keep the label names,
-    # See https://machinelearningmastery.com/how-to-one-hot-encode-sequence-data-in-python/
+    # convert labeles into ordered-set for decoding catagorical values
+    orderd_labels = []
+    for l in labels:
+        if l not in orderd_labels:
+            orderd_labels.append(l)
+
     label_vector = np.asarray(pd.get_dummies(labels), dtype = np.float32)
 
-    return np.asarray(segments).reshape(-1, timeslice_length, len(features)), label_vector
+    return np.asarray(segments).reshape(-1, timeslice_length, len(features)), label_vector, orderd_labels
 
 # Cell
 import tensorflow as tf

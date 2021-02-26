@@ -8,8 +8,6 @@ jupyterlab = "*"
 nbdev = "==1.1.12"
 jupyter = "*"
 ipython = "*"
-jupyterlab-git = "==0.30.0b1"
-nbdime = "*"
 
 [dev-packages]
 

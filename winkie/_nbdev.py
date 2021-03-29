@@ -12,6 +12,7 @@ index = {"DLCImporter": "00_dlc_importer.ipynb",
          "LabelAssistant": "03_label_assistant.ipynb",
          "build_timeseries": "04_ml.ipynb",
          "build_model": "04_ml.ipynb",
+         "build_lstm_model": "04_ml.ipynb",
          "gpus": "04_ml.ipynb"}
 
 modules = ["dlc_importer.py",

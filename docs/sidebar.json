@@ -3,7 +3,7 @@
     "Overview": "/",
     "DLCImporter": "dlc_importer.html",
     "PigeonAnimator": "pigeon_animator.html",
-    "Pandas MultiIndex examples": "pandas_multiindex_examples.html",
+    "pandas_multiindex_examples": "pandas_multiindex_examples.html",
     "LabelAssistant": "label_assistant.html",
     "Ml": "ml.html"
   }

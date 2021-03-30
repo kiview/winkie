@@ -3,6 +3,7 @@ labelled_merged.h5
 /logs/
 /model*/
 /*.h5
+/*.txt
 
 *.bak
 .gitattributes

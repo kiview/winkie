@@ -7,13 +7,14 @@ import pandas as pd
 
 from scipy import stats
 import numpy as np
+from tqdm.notebook import trange
 
 def build_timeseries(df, features, timeslice_length):
     "Split the data in `df` into timeseries segments of length `timeslice_length` containing given `features`."
 
     segments = []
     labels = []
-    for i in range(0, len(df) - timeslice_length + 1, timeslice_length):
+    for i in trange(0, len(df) - timeslice_length + 1, timeslice_length):
         s = []
         i_end = i + timeslice_length
         for f in features:

@@ -4,6 +4,7 @@ labelled_merged.h5
 /model*/
 /*.h5
 /*.txt
+/*.npy
 
 *.bak
 .gitattributes

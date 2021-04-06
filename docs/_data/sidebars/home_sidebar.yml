@@ -22,8 +22,8 @@ entries:
       title: LabelAssistant
       url: label_assistant.html
     - output: web,pdf
-      title: Ml
-      url: ml.html
+      title: Timeseries Preperation
+      url: ts_prep.html
     output: web
     title: winkie
   output: web

@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "8652e654384b7e82c5265bbce0682279ff76c06f4a14e9809ec0458c22b44145"
+            "sha256": "50c6bb9501957d930b351e3c9ac5de13fbe33d001b8962cc53e583c8bbf30373"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -12,6 +12,11 @@
                 "name": "pypi",
                 "url": "https://pypi.python.org/simple",
                 "verify_ssl": true
+            },
+            {
+                "name": "pytorch",
+                "url": "https://download.pytorch.org/whl/cu111",
+                "verify_ssl": false
             }
         ]
     },
@@ -19,6 +24,14 @@
         "e1839a8": {
             "editable": true,
             "path": "."
+        },
+        "torchaudio": {
+            "index": "pytorch",
+            "version": "==0.8.1"
+        },
+        "torchvision": {
+            "index": "pytorch",
+            "version": "==0.9.1"
         }
     },
     "develop": {}

@@ -5,6 +5,7 @@ labelled_merged.h5
 /*.h5
 /*.txt
 /*.npy
+/export
 
 *.bak
 .gitattributes

@@ -7,6 +7,7 @@ import os
 import pandas as pd
 import winkie.dlc_importer as dlc_importer
 from .dlc_importer import DLCImporter
+from tqdm.notebook import tqdm
 
 class LabelAssistant:
     """Used to label data and generate labelled data.
@@ -16,10 +17,10 @@ class LabelAssistant:
     """
 
     def __init__(self, behaviors, data_path, default_label='not_defined'):
+        self.data_path = data_path
         self.behaviors = behaviors
         self.default_label = default_label
         self.files = os.listdir(data_path)
-        self.file_paths = [os.path.join(data_path, f) for f in self.files]
         self.labels = {'behavior': [], 'start': [], 'end': [], 'file': []}
         self.imp = DLCImporter()
 
@@ -53,11 +54,14 @@ class LabelAssistant:
 
             return df
 
-        df_list = [import_and_tag(f) for f in self.file_paths]
+        filenames_to_import = list(filter(lambda x: x in self.labels['file'], self.files))
+        files_to_import = [os.path.join(self.data_path, f) for f in filenames_to_import]
+
+        df_list = [import_and_tag(f) for f in tqdm(files_to_import)]
         df_merged = pd.concat(df_list)
         df_merged['behavior'] = self.default_label
 
-        for i, f in enumerate(self.labels['file']):
+        for i, f in enumerate(tqdm(self.labels['file'])):
             file_name_select = df_merged['file_name'] == f
             frame_select = (self.labels['start'][i] <= df_merged['frame']) & (df_merged['frame'] <= self.labels['end'][i])
             df_merged.loc[file_name_select & frame_select, ['behavior']] = self.labels['behavior'][i]

@@ -40,7 +40,7 @@ nb_path: ".ipynb_checkpoints\03_label_assistant-checkpoint.ipynb"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h2 id="LabelAssistant" class="doc_header"><code>class</code> <code>LabelAssistant</code><a href="https://github.com/kiview/winkie/tree/master/winkie/label_assistant.py#L11" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>LabelAssistant</code>(<strong><code>behaviors</code></strong>, <strong><code>data_path</code></strong>, <strong><code>default_label</code></strong>=<em><code>'not_defined'</code></em>)</p>
+<h2 id="LabelAssistant" class="doc_header"><code>class</code> <code>LabelAssistant</code><a href="https://github.com/kiview/winkie/tree/master/winkie/label_assistant.py#L12" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>LabelAssistant</code>(<strong><code>behaviors</code></strong>, <strong><code>data_path</code></strong>, <strong><code>default_label</code></strong>=<em><code>'not_defined'</code></em>)</p>
 </blockquote>
 <p>Used to label data and generate labelled data.</p>
 <p>Please note that generating the labelled data will, as of now, also apply all pre-processing included in
@@ -93,15 +93,17 @@ nb_path: ".ipynb_checkpoints\03_label_assistant-checkpoint.ipynb"
 <span class="n">display</span><span class="p">(</span><span class="n">df_applied</span><span class="p">)</span>
 
 <span class="n">df_c1</span> <span class="o">=</span> <span class="n">df_applied</span><span class="p">[</span><span class="n">df_applied</span><span class="p">[</span><span class="s1">&#39;file_name&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;coordinates.h5&#39;</span><span class="p">]</span>
-<span class="n">df_c2</span> <span class="o">=</span> <span class="n">df_applied</span><span class="p">[</span><span class="n">df_applied</span><span class="p">[</span><span class="s1">&#39;file_name&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;coordinates2.h5&#39;</span><span class="p">]</span>
 
 <span class="n">df_c1_4</span> <span class="o">=</span> <span class="n">df_c1</span><span class="p">[</span><span class="n">df_c1</span><span class="p">[</span><span class="s1">&#39;frame&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">4</span><span class="p">]</span>
-<span class="n">df_c2_4</span> <span class="o">=</span> <span class="n">df_c2</span><span class="p">[</span><span class="n">df_c2</span><span class="p">[</span><span class="s1">&#39;frame&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">4</span><span class="p">]</span>
+<span class="n">df_c1_1</span> <span class="o">=</span> <span class="n">df_c1</span><span class="p">[</span><span class="n">df_c1</span><span class="p">[</span><span class="s1">&#39;frame&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">]</span>
 <span class="n">test_eq</span><span class="p">(</span><span class="n">df_c1_4</span><span class="p">[</span><span class="s1">&#39;behavior&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s1">&#39;pecking&#39;</span><span class="p">)</span>
-<span class="n">test_eq</span><span class="p">(</span><span class="n">df_c2_4</span><span class="p">[</span><span class="s1">&#39;behavior&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">default_label</span><span class="p">)</span>
+<span class="n">test_eq</span><span class="p">(</span><span class="n">df_c1_1</span><span class="p">[</span><span class="s1">&#39;behavior&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">default_label</span><span class="p">)</span>
 
 <span class="n">df_c1_12</span> <span class="o">=</span> <span class="n">df_c1</span><span class="p">[</span><span class="n">df_c1</span><span class="p">[</span><span class="s1">&#39;frame&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">12</span><span class="p">]</span>
 <span class="n">test_eq</span><span class="p">(</span><span class="n">df_c1_12</span><span class="p">[</span><span class="s1">&#39;behavior&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s1">&#39;shaking&#39;</span><span class="p">)</span>
+
+<span class="c1"># files that are not labelled are ignored in import</span>
+<span class="n">test_eq</span><span class="p">((</span><span class="n">df_applied</span><span class="p">[</span><span class="n">df_applied</span><span class="p">[</span><span class="s1">&#39;file_name&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;coordinates2.h5&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">empty</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -336,7 +338,7 @@ nb_path: ".ipynb_checkpoints\03_label_assistant-checkpoint.ipynb"
       <td>1.667139e-14</td>
       <td>100.388462</td>
       <td>-134.573393</td>
-      <td>coordinates2.h5</td>
+      <td>coordinates.h5</td>
       <td>95</td>
       <td>not_defined</td>
     </tr>
@@ -360,7 +362,7 @@ nb_path: ".ipynb_checkpoints\03_label_assistant-checkpoint.ipynb"
       <td>-4.067222e-15</td>
       <td>102.665676</td>
       <td>-134.105164</td>
-      <td>coordinates2.h5</td>
+      <td>coordinates.h5</td>
       <td>96</td>
       <td>not_defined</td>
     </tr>
@@ -384,7 +386,7 @@ nb_path: ".ipynb_checkpoints\03_label_assistant-checkpoint.ipynb"
       <td>-1.157706e-14</td>
       <td>100.767981</td>
       <td>-133.609448</td>
-      <td>coordinates2.h5</td>
+      <td>coordinates.h5</td>
       <td>97</td>
       <td>not_defined</td>
     </tr>
@@ -405,10 +407,10 @@ nb_path: ".ipynb_checkpoints\03_label_assistant-checkpoint.ipynb"
       <td>30.290261</td>
       <td>-174.304594</td>
       <td>0.999999</td>
-      <td>-2.139548e-14</td>
+      <td>-7.184628e-15</td>
       <td>101.112080</td>
       <td>-134.109740</td>
-      <td>coordinates2.h5</td>
+      <td>coordinates.h5</td>
       <td>98</td>
       <td>not_defined</td>
     </tr>
@@ -429,16 +431,16 @@ nb_path: ".ipynb_checkpoints\03_label_assistant-checkpoint.ipynb"
       <td>29.300697</td>
       <td>-174.067206</td>
       <td>1.000000</td>
-      <td>-3.437060e-14</td>
+      <td>-4.214208e-14</td>
       <td>100.597551</td>
       <td>-134.093794</td>
-      <td>coordinates2.h5</td>
+      <td>coordinates.h5</td>
       <td>99</td>
       <td>not_defined</td>
     </tr>
   </tbody>
 </table>
-<p>200 rows × 42 columns</p>
+<p>100 rows × 42 columns</p>
 </div>
 </div>
 
@@ -700,7 +702,7 @@ nb_path: ".ipynb_checkpoints\03_label_assistant-checkpoint.ipynb"
       <td>1.667139e-14</td>
       <td>100.388462</td>
       <td>-134.573393</td>
-      <td>coordinates2.h5</td>
+      <td>coordinates.h5</td>
       <td>95</td>
       <td>not_defined</td>
     </tr>
@@ -724,7 +726,7 @@ nb_path: ".ipynb_checkpoints\03_label_assistant-checkpoint.ipynb"
       <td>-4.067222e-15</td>
       <td>102.665676</td>
       <td>-134.105164</td>
-      <td>coordinates2.h5</td>
+      <td>coordinates.h5</td>
       <td>96</td>
       <td>not_defined</td>
     </tr>
@@ -748,7 +750,7 @@ nb_path: ".ipynb_checkpoints\03_label_assistant-checkpoint.ipynb"
       <td>-1.157706e-14</td>
       <td>100.767981</td>
       <td>-133.609448</td>
-      <td>coordinates2.h5</td>
+      <td>coordinates.h5</td>
       <td>97</td>
       <td>not_defined</td>
     </tr>
@@ -769,10 +771,10 @@ nb_path: ".ipynb_checkpoints\03_label_assistant-checkpoint.ipynb"
       <td>30.290261</td>
       <td>-174.304594</td>
       <td>0.999999</td>
-      <td>-2.139548e-14</td>
+      <td>-7.184628e-15</td>
       <td>101.112080</td>
       <td>-134.109740</td>
-      <td>coordinates2.h5</td>
+      <td>coordinates.h5</td>
       <td>98</td>
       <td>not_defined</td>
     </tr>
@@ -793,16 +795,16 @@ nb_path: ".ipynb_checkpoints\03_label_assistant-checkpoint.ipynb"
       <td>29.300697</td>
       <td>-174.067206</td>
       <td>1.000000</td>
-      <td>-3.437060e-14</td>
+      <td>-4.214208e-14</td>
       <td>100.597551</td>
       <td>-134.093794</td>
-      <td>coordinates2.h5</td>
+      <td>coordinates.h5</td>
       <td>99</td>
       <td>not_defined</td>
     </tr>
   </tbody>
 </table>
-<p>200 rows × 42 columns</p>
+<p>100 rows × 42 columns</p>
 </div>
 </div>
 

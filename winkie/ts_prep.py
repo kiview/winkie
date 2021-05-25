@@ -27,8 +27,4 @@ def build_timeseries(df, features, timeslice_length, window_step_size=1, ignore_
             segments.append(s)
             labels.append(dominant_label)
 
-    orderd_labels = sorted(list(set(labels))) # pd.get_dummies orders alphabetically, needed for decoding
-    df_encoded_labels = pd.get_dummies(labels)
-    label_vector = np.asarray(df_encoded_labels, dtype = np.float32)
-
-    return np.asarray(segments), label_vector, orderd_labels
+    return np.asarray(segments), np.asarray(labels)

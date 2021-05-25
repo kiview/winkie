@@ -6,6 +6,10 @@ labelled_merged.h5
 /*.txt
 /*.npy
 /export
+/*.mp4
+**.pth
+**.pkl
+/*.sav
 
 *.bak
 .gitattributes

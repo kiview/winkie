@@ -10,7 +10,7 @@ verify_ssl = false
 
 [packages]
 jupyterlab = "*"
-nbdev = "==1.1.12"
+nbdev = "==1.1.20"
 jupyter = "*"
 ipython = "*"
 nbdime = "*"
@@ -30,6 +30,5 @@ opencv-python = "*"
 [requires]
 python_version = "3.8"
 
-[packages.e1839a8]
-path = "."
-editable = true
+[packages]
+e1839a8 = {path = ".", editable = true}

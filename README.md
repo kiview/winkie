@@ -338,7 +338,7 @@ df = imp.import_hdf('example_data/coordinates.h5')
     </tr>
   </tbody>
 </table>
-<p>100 rows × 36 columns</p>
+<p>100 rows x 36 columns</p>
 </div>
 
 
@@ -673,7 +673,7 @@ df = winkie.dlc_importer.apply_rotation(df)
     </tr>
   </tbody>
 </table>
-<p>100 rows × 39 columns</p>
+<p>100 rows ï¿½ 39 columns</p>
 </div>
 
 

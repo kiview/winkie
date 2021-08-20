@@ -24,11 +24,9 @@ torchaudio = {index = "pytorch",version = "==0.8.1"}
 mlxtend = "*"
 scikit-plot = "*"
 opencv-python = "*"
+e1839a8 = {path = ".", editable = true}
 
 [dev-packages]
 
 [requires]
 python_version = "3.8"
-
-[packages]
-e1839a8 = {path = ".", editable = true}
